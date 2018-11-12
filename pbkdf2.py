@@ -101,7 +101,7 @@ def _bin_py3(mac, salt, blocks_len, iterations):
         rv = u = _pseudorandom(salt + _pack_int(block))
         for i in xrange(iterations - 1):
             u = _pseudorandom(u)
-            rv = starmap(xor, izip(rv, u))
+            rv = list(starmap(xor, izip(rv, u)))
         buf += bytes(rv)
     return buf
 
